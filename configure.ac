@@ -86,14 +86,13 @@ esac
 dnl OS flag define test
 osflag=""
 case "$host" in
-    *cygwin* | *mingw32*) 
+    *cygwin* | *mingw32*)
         CXXFLAGS="$CXXFLAGS -DWIN32 -I\$(top_srcdir)/platform/windows"
         LIBS="$LIBS -luser32 -lgdi32 -lopengl32 -lglu32"
         DLLFLAGS="-avoid-version -Wc,-def -Wc,Glide2x.def"
         ;;
     *darwin*)
-        osflag="__linux__"
-        CXXFLAGS="$CXXFLAGS -D__unix__ -D$osflag -I\$(top_srcdir)/platform/linux"
+        CXXFLAGS="$CXXFLAGS -D__unix__ -I\$(top_srcdir)/platform/linux"
         LIBS="$LIBS -Wl,-framework,OpenGL"
         ;;
     *freebsd*)
